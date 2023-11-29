@@ -24,19 +24,24 @@ public class CharacterCounter {
             return cache.get(str);
         }
 
-        Map <Character, Integer> characterCounts = countNumberOfCharactersAndTheirRepetitions(str);
+        Map<Character, Integer> characterCounts = countNumberOfCharactersAndTheirRepetitions(str);
         cache.put(str, characterCounts);
         return characterCounts;
     }
 
-    public void showResult (String str) {
+    public String showResult(String str) {
         Map<Character, Integer> characterCounts = selectingProcessingResult(str);
-        System.out.println("String: \"" + str + "\"");
-        System.out.println("List of characters in the string with their counts of occurrences:");
+        StringBuilder result = new StringBuilder();
+
+        result.append("String: \"" + str + "\"\n");
+        result.append("List of characters:\n");
+
         for (Map.Entry<Character, Integer> entry : characterCounts.entrySet()) {
-            System.out.println("'" + entry.getKey() + "'" + " - " + entry.getValue());
+            result.append("'" + entry.getKey() + "'" + " - " + entry.getValue() + "\n");
+
 
         }
+        return result.toString();
     }
 
 }

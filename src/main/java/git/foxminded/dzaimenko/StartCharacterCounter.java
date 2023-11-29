@@ -4,9 +4,9 @@ public class StartCharacterCounter {
 
     public static void main(String[] args) {
         CharacterCounter characterCounter = new CharacterCounter();
-        String originalString = "Javalanguage";
+        String originalString = "Task 1.4 Collection Framework";
 
-        characterCounter.showResult(originalString);
+        System.out.println(characterCounter.showResult(originalString));
 
     }
 
