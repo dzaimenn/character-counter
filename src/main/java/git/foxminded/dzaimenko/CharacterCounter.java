@@ -2,6 +2,7 @@ package git.foxminded.dzaimenko;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class CharacterCounter {
 
@@ -31,17 +32,13 @@ public class CharacterCounter {
 
     public String showResult(String str) {
         Map<Character, Integer> characterCounts = selectingProcessingResult(str);
-        StringBuilder result = new StringBuilder();
 
-        result.append("String: \"" + str + "\"\n");
-        result.append("List of characters:\n");
+        String characterCountsStr = characterCounts.entrySet()
+                .stream()
+                .map(entry -> "'" + entry.getKey() + "'" + " - " + entry.getValue())
+                .collect(Collectors.joining("\n"));
 
-        for (Map.Entry<Character, Integer> entry : characterCounts.entrySet()) {
-            result.append("'" + entry.getKey() + "'" + " - " + entry.getValue() + "\n");
-
-
-        }
-        return result.toString();
+        return "String: \"" + str + "\"\n" + "List of characters:\n" + characterCountsStr + "\n";
     }
 
 }
